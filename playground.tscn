@@ -26,13 +26,25 @@ texture = SubResource("GradientTexture2D_rupst")
 shape = SubResource("RectangleShape2D_edjgo")
 
 [node name="Sprite2D5" type="Sprite2D" parent="."]
-position = Vector2(379, 167)
+position = Vector2(380, 167)
 scale = Vector2(2.9531257, 1)
 texture = SubResource("GradientTexture2D_rupst")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D5/StaticBody2D"]
+shape = SubResource("RectangleShape2D_edjgo")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(102.00001, 219)
+rotation = 0.4631022
+scale = Vector2(6.0832524, 1)
+texture = SubResource("GradientTexture2D_rupst")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D6/StaticBody2D"]
+scale = Vector2(0.99999994, 1)
 shape = SubResource("RectangleShape2D_edjgo")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
