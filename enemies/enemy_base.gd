@@ -18,6 +18,7 @@ extends CharacterBody2D
 var _dead := false
 var _knockback_lock := 0.0
 var _flash := 0.0
+var _enemy_manager: EnemyManager = null
 
 func _ready() -> void:
 	health.changed.connect(_on_health_changed)
@@ -30,6 +31,15 @@ func _ready() -> void:
 
 	# 血条初始化
 	_on_health_changed(health.current_health, health.max_health)
+	_enemy_manager = get_tree().get_first_node_in_group("enemy_manager") as EnemyManager
+	if _enemy_manager:
+		_enemy_manager.register_enemy(self)
+	
+	
+func _exit_tree() -> void:
+	if _enemy_manager:
+		_enemy_manager.unregister_enemy(self)
+		_enemy_manager = null
 
 func _physics_process(delta: float) -> void:
 	if _dead:
@@ -75,6 +85,10 @@ func _die() -> void:
 	if _dead:
 		return
 	_dead = true
+	# 先注销再 free
+	if _enemy_manager:
+		_enemy_manager.unregister_enemy(self)
+		_enemy_manager = null
 	queue_free()
 
 func _on_health_changed(cur: int, maxv: int) -> void:

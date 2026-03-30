@@ -31,6 +31,14 @@ size = Vector2(16, 46)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_oul6g")
+move_speed = null
+gravity = null
+attack_damage = null
+attack_knockback = null
+max_health = null
+hurt_invincible_time = null
+hurt_knockback = null
+hurt_lock_time = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -24)
@@ -118,7 +126,6 @@ shape = SubResource("RectangleShape2D_8t03j")
 offset_left = -8.0
 offset_top = -46.0
 offset_right = 8.0
-offset_bottom = 0.0
 color = Color(0.2, 0.4, 1, 0.25)
 
 [node name="HPBar" type="ProgressBar" parent="."]

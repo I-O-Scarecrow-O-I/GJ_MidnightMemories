@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://cgrfrks0tnfml"]
+[gd_scene load_steps=27 format=3 uid="uid://cgrfrks0tnfml"]
 
+[ext_resource type="Script" uid="uid://wy4e57earvgx" path="res://world/level_controller.gd" id="1_pi42a"]
 [ext_resource type="PackedScene" uid="uid://cqwelr0wyulpa" path="res://player/player.tscn" id="1_rupst"]
 [ext_resource type="Script" uid="uid://ryrekjjhu8ee" path="res://world/enemy_manager.gd" id="2_emgr1"]
 [ext_resource type="Script" uid="uid://door1234568aa" path="res://world/door.gd" id="3_door1"]
@@ -72,6 +73,7 @@ radius = 8.0
 height = 32.0
 
 [node name="Playground" type="Node2D"]
+script = ExtResource("1_pi42a")
 
 [node name="EnemyManager" type="Node" parent="."]
 script = ExtResource("2_emgr1")
@@ -273,3 +275,11 @@ offset_bottom = -46.0
 
 [node name="Player" parent="." instance=ExtResource("1_rupst")]
 position = Vector2(243, 147)
+move_speed = 200.0
+gravity = 980.0
+attack_damage = 1
+attack_knockback = 240.0
+max_health = 10
+hurt_invincible_time = 0.5
+hurt_knockback = 260.0
+hurt_lock_time = 0.16

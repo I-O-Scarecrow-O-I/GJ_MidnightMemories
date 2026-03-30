@@ -38,6 +38,8 @@ var _hurt_lock := 0.0
 @onready var interaction_sensor: Area2D = $InteractionSensor
 
 var _interactables_in_range: Array[Interactable] = []
+var facing: int = 1 # 1 = right, -1 = left
+var _hitbox_offset_x: float = 0.0
 
 func _ready() -> void:
 	# configure combat
@@ -53,6 +55,8 @@ func _ready() -> void:
 	_on_health_changed(health.current_health, health.max_health)
 
 	hurtbox.hit_received.connect(_on_player_hurt)
+	
+	_hitbox_offset_x = abs(hitbox.position.x)
 
 	# ladder & interaction
 	ladder_sensor.area_entered.connect(_on_ladder_area_entered)
@@ -114,8 +118,11 @@ func update_direction() -> void:
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down")
 	)
+	if direction.x != 0:
+		facing = sign(direction.x)
 
 func start_attack() -> void:
+	hitbox.position.x = _hitbox_offset_x * facing
 	hitbox.set_active(true)
 
 func end_attack() -> void:
@@ -170,8 +177,8 @@ func _on_health_changed(cur: int, maxv: int) -> void:
 		hp_bar.value = cur
 
 func _on_player_died() -> void:
-	print("Player died")
-	# TODO: respawn / game over
+	await get_tree().create_timer(0.5).timeout
+	get_tree().reload_current_scene()
 
 func add_debug_indicator(color: Color = Color.RED) -> void:
 	var d: Node2D = DEBUG_INDICATOR.instantiate()
