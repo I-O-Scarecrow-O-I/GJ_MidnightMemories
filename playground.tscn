@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cgrfrks0tnfml"]
+[gd_scene load_steps=26 format=3 uid="uid://cgrfrks0tnfml"]
 
 [ext_resource type="Script" uid="uid://wy4e57earvgx" path="res://world/level_controller.gd" id="1_pi42a"]
 [ext_resource type="PackedScene" uid="uid://cqwelr0wyulpa" path="res://player/player.tscn" id="1_rupst"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://d0dxpm1siwaff" path="res://combat/hurtbox.gd" id="6_hurt1"]
 [ext_resource type="Script" uid="uid://diup8f4tjxbgg" path="res://actors/health.gd" id="6_ynsuh"]
 [ext_resource type="Script" uid="uid://dnff3v4tjxbgg" path="res://combat/hitbox.gd" id="7_hitbx"]
+[ext_resource type="Texture2D" uid="uid://ua3x41hnnjgf" path="res://enemies/sprites/Monster1_Anim_SpriteSheet.png" id="8_h1jm5"]
 
 [sub_resource type="Gradient" id="Gradient_edjgo"]
 colors = PackedColorArray(0, 0, 0, 1, 0.06469653, 0.06469653, 0.06469653, 1)
@@ -51,14 +52,6 @@ height = 34.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e1hit"]
 radius = 12.0
 height = 48.0
-
-[sub_resource type="Gradient" id="Gradient_4bqqs"]
-colors = PackedColorArray(0.7838217, 0.18450099, 0.1902706, 1, 0.6556543, 0.17992371, 0.11498516, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ynsuh"]
-gradient = SubResource("Gradient_4bqqs")
-width = 60
-height = 80
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e2"]
 radius = 8.0
@@ -204,10 +197,11 @@ offset_bottom = 9.0
 color = Color(1, 0.5, 0.1, 0.25)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Enemy1"]
-visible = false
 position = Vector2(0, -15.718749)
 scale = Vector2(0.3125, 0.39296868)
-texture = SubResource("GradientTexture2D_ynsuh")
+texture = ExtResource("8_h1jm5")
+hframes = 4
+vframes = 2
 
 [node name="Health" type="Node" parent="Enemy1"]
 script = ExtResource("6_ynsuh")
@@ -259,10 +253,11 @@ offset_bottom = 9.0
 color = Color(1, 0.5, 0.1, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy2"]
-visible = false
 position = Vector2(0, -17.000002)
 scale = Vector2(0.3125, 0.4296878)
-texture = SubResource("GradientTexture2D_ynsuh")
+texture = ExtResource("8_h1jm5")
+hframes = 4
+vframes = 2
 
 [node name="Health" type="Node" parent="Enemy2"]
 script = ExtResource("6_ynsuh")
