@@ -22,6 +22,8 @@ func process(_delta: float) -> PlayerState:
 func handle_input(event:InputEvent)->PlayerState:
 	if event.is_action_released("jump"):
 		player.velocity.y*=0.5
+	if event.is_action_pressed("attack"):
+		return attack
 	return next_state
 	
 
@@ -31,5 +33,7 @@ func physics_process(delta: float) -> PlayerState:
 		return idle
 	elif player.velocity.y>=0:
 		return fall
+	if player.is_in_ladder_area:
+		return climb
 	player.velocity.x=player.direction.x*player.move_speed
 	return next_state

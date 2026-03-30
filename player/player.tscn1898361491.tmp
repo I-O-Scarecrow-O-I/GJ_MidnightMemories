@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqwelr0wyulpa"]
+[gd_scene load_steps=14 format=3 uid="uid://cqwelr0wyulpa"]
 
 [ext_resource type="Script" uid="uid://dnjsmonuwnrw3" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://dm36i7js4ua2" path="res://player/states/idle.gd" id="2_g1dw6"]
@@ -8,8 +8,6 @@
 [ext_resource type="Script" uid="uid://dnff3v4tjxbgg" path="res://combat/hitbox.gd" id="6_hitbx"]
 [ext_resource type="Script" uid="uid://ttackstate12" path="res://player/states/attack.gd" id="7_atk01"]
 [ext_resource type="Script" uid="uid://climbstate123" path="res://player/states/climb.gd" id="8_clmb1"]
-[ext_resource type="Script" uid="uid://d0dxpm1siwaff" path="res://combat/hurtbox.gd" id="9_hg6s5"]
-[ext_resource type="Script" uid="uid://diup8f4tjxbgg" path="res://actors/health.gd" id="10_8t03j"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kqu6x"]
 size = Vector2(18, 48)
@@ -21,16 +19,14 @@ size = Vector2(16, 46)
 size = Vector2(20, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ladr"]
-size = Vector2(16, 46)
+size = Vector2(16, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_intr"]
 size = Vector2(24, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8t03j"]
-size = Vector2(16, 46)
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_oul6g")
+move_speed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -24)
@@ -42,19 +38,10 @@ shape = SubResource("RectangleShape2D_oul6g")
 
 [node name="HitBox" type="Area2D" parent="."]
 position = Vector2(18, -23)
-collision_layer = 4
-collision_mask = 8
 script = ExtResource("6_hitbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_hitbx")
-
-[node name="DebugRect" type="ColorRect" parent="HitBox"]
-offset_left = -10.0
-offset_top = -8.0
-offset_right = 10.0
-offset_bottom = 8.0
-color = Color(1, 0.2, 0.2, 0.25)
 
 [node name="LadderSensor" type="Area2D" parent="."]
 position = Vector2(0, -23)
@@ -103,29 +90,3 @@ theme_override_font_sizes/font_size = 12
 text = "Player"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 16
-script = ExtResource("9_hg6s5")
-metadata/_custom_type_script = "uid://d0dxpm1siwaff"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -23)
-shape = SubResource("RectangleShape2D_8t03j")
-
-[node name="DebugRect" type="ColorRect" parent="HurtBox"]
-offset_left = -8.0
-offset_top = -46.0
-offset_right = 8.0
-offset_bottom = 0.0
-color = Color(0.2, 0.4, 1, 0.25)
-
-[node name="HPBar" type="ProgressBar" parent="."]
-offset_left = -15.0
-offset_top = -62.0
-offset_right = 15.0
-offset_bottom = -58.0
-
-[node name="Health" type="Node" parent="."]
-script = ExtResource("10_8t03j")

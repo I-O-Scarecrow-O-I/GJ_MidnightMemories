@@ -77,6 +77,17 @@ action={
 ]
 }
 
+[layer_names]
+
+avoidance/layer_1="player_body"
+avoidance/layer_2="enemy_body"
+avoidance/layer_3="player_hitbox"
+avoidance/layer_4="enemy_hurtbox"
+avoidance/layer_5="enemy_hitbox"
+avoidance/layer_6="player_hurtbox"
+avoidance/layer_7="interactable"
+avoidance/layer_8="ladder"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

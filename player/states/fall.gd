@@ -21,10 +21,14 @@ func exit()->void:
 func handle_input(event:InputEvent)->PlayerState:
 	if event.is_action_pressed("jump") and coyote_timer>0:
 		return jump
+	if event.is_action_pressed("attack"):
+		return attack
 	return next_state
 
 func process(delta: float) -> PlayerState:  
 	coyote_timer-=delta
+	if player.is_in_ladder_area:
+		return climb
 	return next_state
 	
 
